@@ -9,13 +9,15 @@
 - Source Database authentication
 
 ## Procedure
- *If network exists in AWS Account you are working in*
 
 ### Terraform Lookup Function 
 *To check if existing network is already in place in the AWS account you are working in*  
 *Example:* `lookup(map, key, default)`  
+
+ ## Q1: *If network exists in AWS Account you are working in go to DMS BuildOut*
+ ## Q2: *If network infastrucutre does not exist in AWS Account working in*
  
-### DMS Buildout
+### DMS BuildOut
 - RDS Target Creation (RDS)
 - DMS Replication Instance Creation
 - DMS Source Endpoint Creation
@@ -25,7 +27,7 @@
   2.   Validate Data Integrity on Target
   3.   Make small non-destructive change to data and validate sync is running as expected
 
-*If network infastrucutre does not exist in AWS Account working in*
+
 ### Infastructure Buildout
 - Build VPC
 - Build 1 Public and 2 Private Subnets
