@@ -5,7 +5,7 @@
 - Source Database
 
 ## Steps
-*If network exists*
+*If network exists in AWS Account you are working in*
 ### DMS Buildout
 - RDS Target Creation
 - DMS Replication Instance Creation
@@ -13,9 +13,12 @@
 - DMS Target Enpoint Creation
 - DMS Task Creation
 
-*If network infastrucutre does not exist*
+*If network infastrucutre does not exist in AWS Account working in*
 ### Infastructure Buildout
 - Build VPC
 - Build Public and Private Subnets
+- Build Required Securty Groups
+- Build IGW
+- Build NGW
 
 ## References 
