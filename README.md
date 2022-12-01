@@ -28,6 +28,6 @@
 - Build NGW
 - Attach NGW to Private Subnets
 - Test connectivity to On Prem SQL instance
-- Go to ==DMS Buildout==
+- Go to **DMS Buildout**
 
 ## References 
