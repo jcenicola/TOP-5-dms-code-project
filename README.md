@@ -14,8 +14,10 @@
 *To check if existing network is already in place in the AWS account you are working in*  
 *Example:* `lookup(map, key, default)`  
 
- ## Q1: *If network exists in AWS Account you are working in go to DMS BuildOut*
- ## Q2: *If network infastrucutre does not exist in AWS Account working in*
+ #### Q1:  
+ *If network exists in AWS Account you are working in go to DMS BuildOut*
+ #### Q2:  
+ *If network infastrucutre does not exist in AWS Account working in*
  
 ### DMS BuildOut
 - RDS Target Creation (RDS)
