@@ -25,8 +25,7 @@
  
 ### DMS BuildOut
 - RDS Target Creation (RDS)  
-`
-*codeblock here
+`*codeblock here
 `
 - DMS Replication Instance Creation
 - DMS Source Endpoint Creation
