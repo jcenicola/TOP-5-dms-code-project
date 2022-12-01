@@ -21,9 +21,10 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
 `
 
  #### Discovery Question 1:  
- *If network exists in AWS Account you are working in go to [DMS BuildOut](#DMS-BuildOut)*
+ *Does the target network infrastructure exist in AWS Account you are working in? If so, go to [DMS BuildOut](#DMS-BuildOut)*  
+ 
  #### Discovery Question 2:  
- *If network infastrucutre does not exist in AWS Account working in got to [Infrastucture BuildOut](#Infastructure-BuildOut)*
+ *If no network infastrucutre exists in AWS Account working in, go to [Infrastucture BuildOut](#Infastructure-BuildOut)*
  
 ### DMS-BuildOut
 - RDS Target Creation (RDS)  
