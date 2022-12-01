@@ -43,7 +43,7 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
  `*codeblock here
 `
   1.   Monitor TasK Execution (Table Statistics)
-  - Click on your task (**YOUR MIGRATION TASK**) and scroll to the Table statistics section to view the table statistics to see how many rows have been moved.
+  - *Click on your task (**YOUR MIGRATION TASK**) and scroll to the Table statistics section to view the table statistics to see how many rows have been moved.*
   3.   Validate Data Integrity on Target
   4.   Make small non-destructive change to data and validate sync is running as expected
 
