@@ -10,6 +10,12 @@
 
 ## Procedure
  *If network exists in AWS Account you are working in*
+
+### Terraform Lookup Function 
+*To check if existing network is already in place in the AWS account you are working in*
+*Exammple*
+`lookup(map, key, default)`
+ 
 ### DMS Buildout
 - RDS Target Creation (RDS)
 - DMS Replication Instance Creation
