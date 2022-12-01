@@ -46,7 +46,7 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
   3.   Make small non-destructive change to data and validate sync is running as expected
 
 
-### Infastructure-Buildout
+### Infastructure-BuildOut
 - Build VPC
 - Build 1 Public and 2 Private Subnets
 - Build Required Securty Groups
