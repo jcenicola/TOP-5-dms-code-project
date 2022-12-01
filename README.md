@@ -57,3 +57,9 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
 - Go to **DMS Buildout**
 
 ## References 
+[AWS Database Migration Service (DMS)](https://aws.amazon.com/dms/)
+
+[AWS RDS](https://aws.amazon.com/rds/?p=ft&c=db&z=30)
+
+[Microsoft SQL](https://www.microsoft.com/en-us/sql-server/sql-server-2019)
+
