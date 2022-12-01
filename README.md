@@ -15,13 +15,17 @@
 - DMS Source Endpoint Creation
 - DMS Target Enpoint Creation
 - DMS Task Creation
+-   Monitor TasK Execution (Table Statistics)
+-   Validate Data Integrity on Target
+-   Make small non-destructive change to data and validate sync is running as expected
 
 *If network infastrucutre does not exist in AWS Account working in*
 ### Infastructure Buildout
 - Build VPC
-- Build Public and Private Subnets
+- Build 1 Public and 2 Private Subnets
 - Build Required Securty Groups
 - Build IGW
 - Build NGW
+- Attach NGW to Private Subnets
 
 ## References 
