@@ -12,7 +12,7 @@
 
 ### Terraform Lookup Function 
 *To check if existing network is already in place in the AWS account you are working in*  
-*Example:* `lookup(map, key, default)`  
+*Example:* `lookup(map, key, default)`\ 
 `
 *codeblock here
 `
