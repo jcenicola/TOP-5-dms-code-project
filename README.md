@@ -30,9 +30,15 @@
 - DMS Replication Instance Creation  
  `*codeblock here
 `
-- DMS Source Endpoint Creation
-- DMS Target Enpoint Creation
-- DMS Task Creation
+- DMS Source Endpoint Creation. 
+  `*codeblock here
+`
+- DMS Target Enpoint Creation  
+  `*codeblock here
+`
+- DMS Task Creation. 
+  `*codeblock here
+`
   1.   Monitor TasK Execution (Table Statistics)
   2.   Validate Data Integrity on Target
   3.   Make small non-destructive change to data and validate sync is running as expected
