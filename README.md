@@ -30,8 +30,8 @@
 - DMS Replication Instance Creation  
  `*codeblock here
 `
-- DMS Source Endpoint Creation. 
-  `*codeblock here
+- DMS Source Endpoint Creation   
+ `*codeblock here
 `
 - DMS Target Enpoint Creation  
   `*codeblock here
