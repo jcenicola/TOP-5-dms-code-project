@@ -5,12 +5,13 @@
 
 ## Prerequsites
 - Check for existing AWS Network Infrastucture
-- Source Database
+- Source Database connectivity
+- Source Database authentication
 
 ## Procedure
  *If network exists in AWS Account you are working in*
 ### DMS Buildout
-- RDS Target Creation
+- RDS Target Creation (RDS)
 - DMS Replication Instance Creation
 - DMS Source Endpoint Creation
 - DMS Target Enpoint Creation
