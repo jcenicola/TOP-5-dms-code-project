@@ -3,7 +3,7 @@
 ## Executive Summary
 Migrating dabases can be a complex, multi-step process that involves pre-migration assessments, conversion of database schema and code, data migration, functional testing, performance tuning, and many other steps. The two fundamental steps in this process that require the most effort are the conversion of the schema and database code objects, and the migration of the data itself.
 
-This step-by-step guide demonstrates how you can use **AWS Database Migration Service (DMS)** to migrate data from a **Microsoft SQL Server** database to another Microsoft SQL Server databse running on an **Amazon RDS instance**. Additionally, you will use AWS DMS to continually replicate database changes from the source database to the target database in preparation for cutover to AWS.
+This step-by-step guide demonstrates how you can use [AWS Database Migration Service (DMS)](https://aws.amazon.com/dms/) to migrate data from a **Microsoft SQL Server** database to another Microsoft SQL Server databse running on an **Amazon RDS instance**. Additionally, you will use AWS DMS to continually replicate database changes from the source database to the target database in preparation for cutover to AWS.
 
 ## Prerequsites
 - Check for existing AWS Network Infrastucture
