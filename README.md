@@ -15,7 +15,7 @@
 - DMS Source Endpoint Creation
 - DMS Target Enpoint Creation
 - DMS Task Creation
--   Monitor TasK Execution (Table Statistics)
+&ensp;-   Monitor TasK Execution (Table Statistics)
 -   Validate Data Integrity on Target
 -   Make small non-destructive change to data and validate sync is running as expected
 
