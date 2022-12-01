@@ -25,7 +25,7 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
  #### Q2:  
  *If network infastrucutre does not exist in AWS Account working in*
  
-### DMS BuildOut
+### DMS-BuildOut
 - RDS Target Creation (RDS)  
 `*codeblock here
 `
@@ -54,7 +54,7 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
 - Build NGW
 - Attach NGW to Private Subnets
 - Test connectivity to On Prem SQL instance
-- Go to [DMS Buildout](#DMS BuildOut)
+- Go to [DMS Buildout](#DMS-BuildOut)
 
 ## References 
 [AWS Database Migration Service (DMS)](https://aws.amazon.com/dms/)
