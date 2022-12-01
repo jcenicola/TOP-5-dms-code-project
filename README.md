@@ -13,7 +13,8 @@
 
 ### Terraform Lookup Function 
 *To check if existing network is already in place in the AWS account you are working in*  
-*Example:*\  
+*Example:* 
+&nbsp;
 `lookup(map, key, default)`  
  
 ### DMS Buildout
