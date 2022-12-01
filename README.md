@@ -1,7 +1,7 @@
 # TOP-5 DMS SQL to RDS Week 9
 
 ## Executive Summary
-*Blah Blah Blah*
+This step-by-step guide demonstrates how you can use AWS Database Migration Service (DMS) to migrate data from a Microsoft SQL Server database to another Microsoft SQL Server databse running on an Amazon RDS instance. Additionally, you will use AWS DMS to continually replicate database changes from the source database to the target database in preparation for cutover to AWS.
 
 ## Prerequsites
 - Check for existing AWS Network Infrastucture
