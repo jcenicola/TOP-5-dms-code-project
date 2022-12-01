@@ -21,9 +21,9 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
 `
 
  #### Q1:  
- *If network exists in AWS Account you are working in go to DMS BuildOut*
+ *If network exists in AWS Account you are working in go to [DMS BuildOut](#DMS-BuildOut)*
  #### Q2:  
- *If network infastrucutre does not exist in AWS Account working in*
+ *If network infastrucutre does not exist in AWS Account working in got to [Infrastucture BuildOut](#Infrastructure-BuildOut)*
  
 ### DMS-BuildOut
 - RDS Target Creation (RDS)  
@@ -46,7 +46,7 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
   3.   Make small non-destructive change to data and validate sync is running as expected
 
 
-### Infastructure Buildout
+### Infastructure-Buildout
 - Build VPC
 - Build 1 Public and 2 Private Subnets
 - Build Required Securty Groups
