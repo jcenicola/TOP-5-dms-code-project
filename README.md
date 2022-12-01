@@ -7,8 +7,8 @@
 - Check for existing AWS Network Infrastucture
 - Source Database
 
-## Steps
-*If network exists in AWS Account you are working in*
+## Procedure
+ *If network exists in AWS Account you are working in*
 ### DMS Buildout
 - RDS Target Creation
 - DMS Replication Instance Creation
@@ -27,5 +27,7 @@
 - Build IGW
 - Build NGW
 - Attach NGW to Private Subnets
+- Test connectivity to On Prem SQL instance
+- Go to ==DMS Buildout==
 
 ## References 
