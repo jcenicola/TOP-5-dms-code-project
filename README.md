@@ -27,7 +27,9 @@
 - RDS Target Creation (RDS)  
 `*codeblock here
 `
-- DMS Replication Instance Creation
+- DMS Replication Instance Creation  
+ `*codeblock here
+`
 - DMS Source Endpoint Creation
 - DMS Target Enpoint Creation
 - DMS Task Creation
