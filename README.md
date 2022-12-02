@@ -22,7 +22,7 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
 - Not enough subnets
 - Security Groups and NACLs may not meet the needs for the migration
 
-*The time it would take to create the terraform to do this correctly would still not be generic enough to distribute with consistency. In a real world scenario, a consultant could spend 15 - 30 mins looking at the console and absorb everything needed to move forward.*
+*The time it would take to create the terraform to do this correctly would still not be generic enough to distribute with consistency is not an effient effot in our opinion. In a real world scenario, a consultant could spend 15 - 30 mins looking at the console and absorb everything needed to move forward.*
 
  #### Discovery Question 1:  
  *Does the target network infrastructure exist in AWS Account you are working in? If so, go to [DMS BuildOut](#DMS-BuildOut)*  
