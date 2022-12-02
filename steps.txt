@@ -1,0 +1,3 @@
+- run terraform apply 
+- connect to your RDS and create the targetdb
+- restart your replication task from the console and it should work
