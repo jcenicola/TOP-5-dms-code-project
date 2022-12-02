@@ -19,6 +19,13 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
 `
 *codeblock here
 `
+### *Note: After discussing with team, we dertermined this to not be a effient method of discovery due to the fact of differnences between customers network configurations. Customers may have an existing network toplogy configured, however there are several reasons why automation of this task would make this not a viable process.*
+- Current network toplogy may not meet the needs for the migration
+- VPC may not contain the necessary configuraion to meet the needs of migration
+- Not enough subnets
+- Security Groups and NACLs may not meet the needs for the migration
+
+*The time it would take to create the terraform to do this correctly would still not be generic enough to distribute with consistency. In a real world scenario, a consultant could spend 15 - 30 mins looking at the console and absorb everything needed to move forward.*
 
  #### Discovery Question 1:  
  *Does the target network infrastructure exist in AWS Account you are working in? If so, go to [DMS BuildOut](#DMS-BuildOut)*  
