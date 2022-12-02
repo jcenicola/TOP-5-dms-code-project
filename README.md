@@ -1,4 +1,4 @@
-# TOP-5 DMS SQL to RDS Week 9
+# Microsoft SQL migration to Amazon RDS SQL via Database Migration Service
 
 ## Executive Summary
 Migrating dabases can be a complex, multi-step process that involves pre-migration assessments, conversion of database schema and code, data migration, functional testing, performance tuning, and many other steps. The two fundamental steps in this process that require the most effort are the conversion of the schema and database code objects, and the migration of the data itself.
