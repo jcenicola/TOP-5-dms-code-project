@@ -1,9 +1,19 @@
+resource "aws_dms_replication_subnet_group" "test" {
+  replication_subnet_group_description = "Test replication subnet group"
+  replication_subnet_group_id          = "test-dms-replication-subnet-group-tf"
+
+  subnet_ids = [aws_subnet.subnet1.id, aws_subnet.subnet2.id, aws_subnet.subnet3.id]
+}
+
+
+
+
 resource "aws_dms_replication_instance" "replication_instance" {
-  allocated_storage            = 50
-  multi_az                     = false
-  replication_instance_class   = "dms.c5.xlarge"
-  replication_instance_id      = "test-dms-replication-instance-tf"
-  vpc_security_group_ids = [aws_vpc.dms_vpc.default_security_group_id]
+  allocated_storage           = 50
+  multi_az                    = false
+  replication_instance_class  = "dms.c5.xlarge"
+  replication_instance_id     = "test-dms-replication-instance-tf"
+  replication_subnet_group_id = aws_dms_replication_subnet_group.test.id
   tags = {
     Name = "${var.testname}-DMSReplicationInstance"
   }
@@ -18,42 +28,42 @@ resource "aws_dms_replication_instance" "replication_instance" {
 
 
 resource "aws_dms_endpoint" "target_endpoint" {
-  database_name               = "targetdb"
-  endpoint_id                 = "target-dms-endpoint-tf"
-  endpoint_type               = "target"
-  engine_name                 = "sqlserver"
-  password                    = "Password1"
-  username                    = "awssct"
-  port                        = 1433
-  server_name                 = "${aws_db_instance.default.address}"
-  ssl_mode                    = "none"
+  database_name = "targetdb"
+  endpoint_id   = "target-dms-endpoint-tf"
+  endpoint_type = "target"
+  engine_name   = "sqlserver"
+  password      = "Password1"
+  username      = "awssct"
+  port          = 1433
+  server_name   = aws_db_instance.default.address
+  ssl_mode      = "none"
 
   tags = {
     Name = "target-dms-endpoint-tf"
   }
-depends_on = [
-  aws_dms_replication_instance.replication_instance
-]
+  depends_on = [
+    aws_dms_replication_instance.replication_instance
+  ]
 }
 
 
 resource "aws_dms_endpoint" "source_endpoint" {
-  database_name               = "dms_sample"
-  endpoint_id                 = "source-dms-endpoint-tf"
-  endpoint_type               = "source"
-  engine_name                 = "sqlserver"
-  password                    = "Password1"
-  username                    = "awssct"
-  port                        = 1433
-  server_name                 = "ec2-44-203-230-131.compute-1.amazonaws.com"
-  ssl_mode                    = "none"
+  database_name = "dms_sample"
+  endpoint_id   = "source-dms-endpoint-tf"
+  endpoint_type = "source"
+  engine_name   = "sqlserver"
+  password      = "Password1"
+  username      = "awssct"
+  port          = 1433
+  server_name   = "ec2-50-19-61-64.compute-1.amazonaws.com"
+  ssl_mode      = "none"
 
   tags = {
     Name = "source-dms-endpoint-tf"
   }
-depends_on = [
-  aws_dms_replication_instance.replication_instance
-]
+  depends_on = [
+    aws_dms_replication_instance.replication_instance
+  ]
 }
 
 resource "aws_dms_replication_task" "replication_task" {
