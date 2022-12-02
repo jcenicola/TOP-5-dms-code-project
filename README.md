@@ -14,11 +14,8 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
 
 ### Terraform Lookup Function 
 *To check if existing network is already in place in the AWS account you are working in*  
-*Example:* `lookup(map, key, default)`  
+*Example:* `lookup(map, key, default)`    
 
-`
-*codeblock here
-`  
 **Note:** *After discussing with team, we dertermined this to not be a effient method of discovery due to the fact of differnences between customers network configurations. Customers may have an existing network toplogy configured, however there are several reasons why automation of this task would make this not a viable process.*
 - Current network toplogy may not meet the needs for the migration
 - VPC may not contain the necessary configuraion to meet the needs of migration
