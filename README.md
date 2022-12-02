@@ -19,7 +19,7 @@ This step-by-step guide demonstrates how you can use [AWS Database Migration Ser
 `
 *codeblock here
 `
-### *Note: After discussing with team, we dertermined this to not be a effient method of discovery due to the fact of differnences between customers network configurations. Customers may have an existing network toplogy configured, however there are several reasons why automation of this task would make this not a viable process.*
+*Note: After discussing with team, we dertermined this to not be a effient method of discovery due to the fact of differnences between customers network configurations. Customers may have an existing network toplogy configured, however there are several reasons why automation of this task would make this not a viable process.*
 - Current network toplogy may not meet the needs for the migration
 - VPC may not contain the necessary configuraion to meet the needs of migration
 - Not enough subnets
