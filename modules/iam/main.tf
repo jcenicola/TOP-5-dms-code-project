@@ -489,47 +489,33 @@ data "aws_iam_policy_document" "dms_assume_role" {
   }
 }
 
-#########################################################
-##  IAM Role for dms-access-for-endpoint
-#########################################################
-
 resource "aws_iam_role" "dms-access-for-endpoint" {
   assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
-  name               = "${var.region}-${var.namespace}-dms-access-for-endpoint"
+  name               = "dms-access-for-endpoint"
 }
 
-#########################################################
-##  IAM Role for dms-vpc-role
-#########################################################
-
-resource "aws_iam_role" "dms-vpc-role" {
-  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
-  name               = "${var.region}-${var.namespace}-dms-vpc-role"
+resource "aws_iam_role_policy_attachment" "dms-access-for-endpoint-AmazonDMSRedshiftS3Role" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role"
+  role       = aws_iam_role.dms-access-for-endpoint.name
 }
 
-#########################################################
-##  IAM Role for dms-cloudwatch-logs-role
-#########################################################
 
 resource "aws_iam_role" "dms-cloudwatch-logs-role" {
   assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
-  name               = "${var.region}-${var.namespace}-dms-cloudwatch-logs-role"
+  name               = "dms-cloudwatch-logs-role"
 }
 
-#########################################################
-## IAM Attach Policy dms-cloudwatch-logs-role
-#########################################################
-
-resource "aws_iam_role_policy_attachment" "dms-cloudwatch-logs-role" {
+resource "aws_iam_role_policy_attachment" "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole"
   role       = aws_iam_role.dms-cloudwatch-logs-role.name
 }
 
-#########################################################
-## IAM Attach Policy dms-vpc-role
-#########################################################
+resource "aws_iam_role" "dms-vpc-role" {
+  assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
+  name               = "dms-vpc-role"
+}
 
-resource "aws_iam_role_policy_attachment" "dms-vpc-role" {
+resource "aws_iam_role_policy_attachment" "dms-vpc-role-AmazonDMSVPCManagementRole" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"
   role       = aws_iam_role.dms-vpc-role.name
 }
