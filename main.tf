@@ -92,7 +92,7 @@ module "dms" {
   # ds-id            = module.ds.ds-id
   # rds-ad-role      = module.iam.rds-ad-role
   database-sg      = module.network.database-sg
-  # database-subnets = module.network.database-subnets
+  database-subnets = module.network.database-subnets
   target-endpoint  = module.rds.target-endpoint
   ec2instance-private_dns = module.instances.ec2instance-private_dns
 }

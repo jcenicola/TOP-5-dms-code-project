@@ -6,7 +6,7 @@
 ############################################
 
 output "target-endpoint" {
-    value = data.aws_db_instance.database.endpoint
+    value = module.rds.db_instance_address
 }
 
 # output "rds-instance-id" {

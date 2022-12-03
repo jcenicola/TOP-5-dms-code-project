@@ -4,7 +4,7 @@
 resource "aws_dms_replication_subnet_group" "test" {
   replication_subnet_group_description = "Replication subnet group"
   replication_subnet_group_id          = "test-dms-replication-subnet-group-tf"
-  subnet_ids = ["subnet-0cdc3f3354a897c85", "subnet-05ab00755f1543bb0", "subnet-0976a8c9e058a2b0a"]
+  subnet_ids = var.database-subnets
 }
 
 resource "aws_dms_replication_instance" "replication_instance" {

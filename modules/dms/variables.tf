@@ -12,9 +12,9 @@ variable "region" {
   type = string
 }
 
-# variable "database-subnets" {
-#   type = list(any)
-# }
+variable "database-subnets" {
+   type = list(any)
+ }
 
 variable "database-sg" {
   type = string
