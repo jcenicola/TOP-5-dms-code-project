@@ -7,6 +7,7 @@
 # }
 resource "aws_secretsmanager_secret" "admin" {
   name = "admin"
+  recovery_window_in_days = 0
 }
 
 resource "aws_secretsmanager_secret_version" "admin" {
