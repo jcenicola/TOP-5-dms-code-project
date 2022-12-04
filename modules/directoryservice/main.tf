@@ -2,9 +2,7 @@
 ## Retrieve's the password from Parameter Store
 #########################################################
 
-# data "aws_ssm_parameter" "ds-dev" {
-#   name = "ds-dev"
-# }
+
 resource "aws_secretsmanager_secret" "admin" {
   name = "admin"
   recovery_window_in_days = 0
