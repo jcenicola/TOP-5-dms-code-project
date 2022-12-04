@@ -2,35 +2,35 @@
 # RDS Module
 ################################################################################
 
-# resource "aws_db_subnet_group" "rds" {
-#   name       = "rds-subent-group"
-#   subnet_ids = [var.database-subnets[0], var.database-subnets[1], var.database-subnets[2]]
+ resource "aws_db_subnet_group" "rds" {
+   name       = "rds-subent-group"
+   subnet_ids = [var.database-subnets[0], var.database-subnets[1], var.database-subnets[2]]
+   tags = {
+     Name = "My DB subnet group"
+   }
+ }
+ resource "aws_db_instance" "default" {
+   allocated_storage       = 100
+   license_model           = "license-included"
+   engine                  = "sqlserver-se"
+   engine_version          = "15.00.4073.23.v1"
+   instance_class          = "db.r5.xlarge"
+   iops                    = "2000"
+   username                = "awssct"
+   password                = "Password1"
+   backup_retention_period = 0
+   skip_final_snapshot     = true
+   vpc_security_group_ids  = [var.database-sg]
+   db_subnet_group_name    = aws_db_subnet_group.rds.name
+   domain               = var.ds-id
+   domain_iam_role_name = var.rds-ad-role
+    depends_on = [
+      aws_db_subnet_group.rds
+    ]
+ }
 
-#   tags = {
-#     Name = "My DB subnet group"
-#   }
-# }
 
-# resource "aws_db_instance" "default" {
-  # allocated_storage       = 100
-#   license_model           = "license-included"
-  # engine                  = "sqlserver-se"
-#   engine_version          = "15.00.4073.23.v1"
-  # instance_class          = "db.r5.xlarge"
-#   iops                    = "2000"
-  # username                = "awssct"
-  # password                = "Password1"
-#   backup_retention_period = 0
-#   skip_final_snapshot     = true
-#   vpc_security_group_ids  = [var.database-sg]
-#   db_subnet_group_name    = aws_db_subnet_group.rds.name
-#   # depends_on = [
-#   #   aws_security_group.rds_security_group
-#   # ]
-# }
-
-
-module "rds" {
+/*module "rds" {
   source  = "terraform-aws-modules/rds/aws"
 
   identifier = "mssqldb"
@@ -78,3 +78,4 @@ module "rds" {
     }
 }
 
+*/

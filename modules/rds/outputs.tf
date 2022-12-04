@@ -6,7 +6,7 @@
 ############################################
 
 output "target-endpoint" {
-    value = module.rds.db_instance_address
+    value = aws_db_instance.default.address
 }
 
 # output "rds-instance-id" {
