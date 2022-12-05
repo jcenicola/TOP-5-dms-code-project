@@ -1,16 +1,23 @@
-# ################################################################################
-# # DMS Module
-# ################################################################################
+#################################################################################
+## DMS Module
+#################################################################################
+
+########################################
+## Creating replication subnet group
+########################################
 resource "aws_dms_replication_subnet_group" "test" {
   replication_subnet_group_description = "Replication subnet group"
   replication_subnet_group_id          = "test-dms-replication-subnet-group-tf"
   subnet_ids = var.database-subnets
 }
 
+#########################################
+## Creating replication Instance
+#########################################
 resource "aws_dms_replication_instance" "replication_instance" {
-  allocated_storage           = 50
-  multi_az                    = false
-  replication_instance_class  = "dms.c5.xlarge"
+  allocated_storage           = var.dms_allocated_storage
+  multi_az                    = var.dms_multi_az
+  replication_instance_class  = var.replication_instance_class
   replication_instance_id     = "test-dms-replication-instance-tf"
   replication_subnet_group_id = aws_dms_replication_subnet_group.test.id
   tags = {
@@ -18,14 +25,17 @@ resource "aws_dms_replication_instance" "replication_instance" {
   }
 }
 
+#########################################
+## Creating Target Endpoint
+#########################################
 
 resource "aws_dms_endpoint" "target_endpoint" {
-  database_name = "targetdb"
+  database_name = var.target_database_name
   endpoint_id   = "sqlserver-target"
   endpoint_type = "target"
   engine_name   = "sqlserver"
-  password      = "Password1"
-  username      = "awssct"
+  password      = var.awssct
+  username      = var.target_username
   port          = 1433
   server_name   = var.target-endpoint
   ssl_mode      = "none"
@@ -38,14 +48,17 @@ resource "aws_dms_endpoint" "target_endpoint" {
   ]
 }
 
+#########################################
+## Creating Source Endpoint
+#########################################
 
 resource "aws_dms_endpoint" "source_endpoint" {
-  database_name = "dms_sample"
+  database_name = var.source_database_name
   endpoint_id   = "sqlserver-source"
   endpoint_type = "source"
   engine_name   = "sqlserver"
-  password      = "Password1"
-  username      = "awssct"
+  password      = var.awssct
+  username      = var.source_username
   port          = 1433
   server_name   = var.ec2instance-private_dns
   ssl_mode      = "none"
@@ -57,6 +70,10 @@ resource "aws_dms_endpoint" "source_endpoint" {
     aws_dms_replication_instance.replication_instance
   ]
 }
+
+#########################################
+## Creating Replication Task
+#########################################
 
 resource "aws_dms_replication_task" "replication_task" {
   migration_type            = "full-load-and-cdc"

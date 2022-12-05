@@ -12,6 +12,10 @@ variable "region" {
   type = string
 }
 
+variable "sftp-bucket" {
+  type = string  
+}
+
 variable "environment" {
   type = string
 }

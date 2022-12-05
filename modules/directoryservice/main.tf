@@ -1,27 +1,12 @@
 #########################################################
-## Retrieve's the password from Parameter Store
-#########################################################
-
-
-resource "aws_secretsmanager_secret" "admin" {
-  name = "admin"
-  recovery_window_in_days = 0
-}
-
-resource "aws_secretsmanager_secret_version" "admin" {
-  secret_id     = aws_secretsmanager_secret.admin.id
-  secret_string = "Password1"
-}
-
-#########################################################
-## Deploys MicrosoftAD - Directory service
+## Deploys - Directory service
 #########################################################
 
 resource "aws_directory_service_directory" "ds" {
-  name     = "team1.com"
-  password = aws_secretsmanager_secret_version.admin.secret_string
-  edition = "Standard"
-  type = "MicrosoftAD"
+  name      = var.ds_domain_name
+  password  = var.ds_admin
+  edition   = var.ds_edition
+  type      = var.ds_type
 
 lifecycle {
     ignore_changes = [

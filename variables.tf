@@ -10,11 +10,6 @@
 ## General code wide variables
 ###############################
 
-# variable "account_id" {
-#   type    = string
-#   default = "967212246732"
-# }
-
 variable "namespace" {
   description = "The project namespace to use for unique resource naming"
   type        = string
@@ -75,7 +70,7 @@ variable "jump_instance_type" {
 }
 
 variable "win_instance_type" {
-  description = "Windows IIS servers"
+  description = "Windows server type"
   default     = "c5.xlarge"
 }
 
@@ -87,13 +82,15 @@ variable "volume_size" {
 # Machine Images
 
 variable "win-server-2019" {
-  description = "Windows 2019 Base 64"
+  description = "Windows 2019 Base 64 AMI"
   default     = "ami-06371c9f2ad704460"
 }
 
 variable "sql-database-server" {
-  description = "Source - SQL databases server"
-  default     = "ami-03682cbe3aba12927"
+  
+  description = "Source - SQL databases server" 
+  default     = "ami-03682cbe3aba12927" 
+  ## this is an aws community ami in us-east-1 for AWS-DMS Workshop.  
 }
 
 # Instance Key Pair
@@ -103,9 +100,92 @@ variable "key_pair" {
 }
 
 ###############################
-## SNS variables
+## sftp variables
 ###############################
 
-# variable "email" {
-#   default = "john.cenicola@rackspace.com"
-# }
+variable "sftp-bucket" {
+  type = string  
+  default = "sftp-bucket-top"
+}
+
+###############################
+## RDS variables
+###############################
+
+variable "rds_username" {
+  type = string  
+  default = "awssct"
+}
+
+variable "engine" {
+  type = string  
+  default = "sqlserver-se"
+}
+
+variable "engine_version" {
+  type = string  
+  default = "15.00.4073.23.v1"
+}
+
+variable "instance_class" {
+  type = string  
+  default = "db.r5.xlarge"
+}
+
+###############################
+## DMS variables
+###############################
+
+variable "dms_allocated_storage" {
+  type = string
+  default = "50"
+}         
+  
+variable "dms_multi_az" {
+  type = string
+  default = "false"
+}                    
+
+variable "replication_instance_class" {
+  type = string  
+  default = "dms.c5.xlarge"
+}
+
+variable "source_username" {
+  type = string  
+  default = "awssct"
+}
+
+variable "source_database_name" {
+  type = string  
+  default = "dms_sample"
+}
+
+variable "target_username" {
+  type = string  
+  default = "awssct"
+}
+
+variable "target_database_name" {
+  type = string  
+  default = "targetdb"
+}
+
+###################################
+## Directory service Variables
+###################################
+
+variable "ds_domain_name" {
+  type = string  
+  default = "team1.com"
+}
+
+variable "ds_edition" {
+  type = string
+  default = "Standard"
+}
+
+variable "ds_type" {
+  type = string
+  default = "MicrosoftAD"
+}

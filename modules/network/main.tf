@@ -12,7 +12,11 @@ resource "aws_vpc" "vpc" {
     environment = "${terraform.workspace}"
     }
 }
-#Creating the Subnets (Public & Private)
+
+###########################################
+## Creating the Subnets (Public & Private)
+###########################################
+
 resource "aws_subnet" "public-subnets" {
   vpc_id            = aws_vpc.vpc.id
   count             = length(var.azs)
@@ -51,7 +55,11 @@ resource "aws_subnet" "database-subnets" {
     environment = "${terraform.workspace}"
   }
 }
-#Creating the Internet Gateway
+
+###########################################
+## Creating the Internet Gateway
+###########################################
+
 resource "aws_internet_gateway" "igw" {
   vpc_id            = aws_vpc.vpc.id
   tags = {
@@ -60,7 +68,11 @@ resource "aws_internet_gateway" "igw" {
     environment = "${terraform.workspace}"
   }
 }
-#Creating the Route Table
+
+###########################################
+## Creating the Route Tables
+###########################################
+
 resource "aws_route_table" "public-rt" {
   vpc_id            = aws_vpc.vpc.id
   route {
@@ -101,24 +113,10 @@ resource "aws_route_table" "database-rt" {
   }
 }
 
-#Creating a vpc endpoint
-resource "aws_vpc_endpoint" "ec2" {
-  vpc_id            = aws_vpc.vpc.id
-  service_name      = "com.amazonaws.us-east-1.ec2"
-  vpc_endpoint_type = "Interface"
+###################################################
+## Creating subnet association for the route table
+###################################################
 
-  security_group_ids = [var.database-sg]
-
-  private_dns_enabled = true
-
-  tags = {
-    Name = "${var.region}-vpc-endpoint"
-    Project = "${var.namespace}"
-    environment = "${terraform.workspace}"
-  }
-}
-
-#Creating subnet association for the route table
 resource "aws_route_table_association" "public-subnet-association" {
   count          = length(var.public-subnets)
   subnet_id      = element(aws_subnet.public-subnets.*.id, count.index)
@@ -139,13 +137,15 @@ resource "aws_route_table_association" "database-subnet-association" {
 ###  Alocating EIP's for Nat-GW's
 ###########################################
 
-
 resource "aws_eip" "nat-eip" {
   count = 3
   vpc = true
 }
 
-#Creating the Nat Gateways
+###########################################
+## Creating the Nat Gateways
+###########################################
+
 resource "aws_nat_gateway" "nat-gateway" {
   count         = length(var.azs)
   allocation_id = element(aws_eip.nat-eip.*.id, count.index)
@@ -158,9 +158,33 @@ resource "aws_nat_gateway" "nat-gateway" {
     }
   }
 
+  ###########################################
+## Creating a vpc endpoint
+###########################################
+
+resource "aws_vpc_endpoint" "ec2" {
+  vpc_id            = aws_vpc.vpc.id
+  service_name      = "com.amazonaws.us-east-1.ec2"
+  vpc_endpoint_type = "Interface"
+
+  security_group_ids = [var.database-sg]
+
+  private_dns_enabled = true
+
+  tags = {
+    Name = "${var.region}-vpc-endpoint"
+    Project = "${var.namespace}"
+    environment = "${terraform.workspace}"
+  }
+}
+
 #########################################################
-## Create Security Groups for Instances
+## Create Security Groups
 #########################################################
+
+###########################################
+## public security group
+###########################################
 
 resource "aws_security_group" "public-sg" {
   name        = "${terraform.workspace}-${var.region}-public-sg"
@@ -175,7 +199,6 @@ resource "aws_security_group" "public-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   
-
   egress {
     from_port   = 0
     to_port     = 0
@@ -190,6 +213,9 @@ resource "aws_security_group" "public-sg" {
   }
 }
 
+###########################################
+## app security group - private
+###########################################
 
 resource "aws_security_group" "app-sg" {
   name        = "${terraform.workspace}-${var.region}-app-sg"
@@ -245,7 +271,10 @@ resource "aws_security_group" "app-sg" {
   }
 }
 
-# database security group
+###########################################
+## database security group - private
+###########################################
+
 resource "aws_security_group" "database-sg" {
   name        = "${terraform.workspace}-${var.region}-database_sg"
   description = "Allow TLS inbound traffic"

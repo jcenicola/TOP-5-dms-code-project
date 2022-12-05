@@ -149,7 +149,7 @@ resource "aws_iam_role_policy_attachment" "attach_ssm_role" {
 #########################################################
 
 resource "aws_iam_instance_profile" "ec2-profile" {
-  name = "${var.region}-${var.namespace}--ec2-instance-profile"
+  name = "${var.region}-${var.namespace}-ec2-instance-profile"
   role = aws_iam_role.role.name
 }
 

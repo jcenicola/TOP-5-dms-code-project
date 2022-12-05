@@ -11,6 +11,10 @@ variable "region" {
   type = string
 }
 
+variable "awssct" {
+  type = string
+}
+
 variable "database-subnets" {
   type = list(any)
 }
@@ -24,5 +28,21 @@ variable "rds-ad-role" {
 }
 
 variable "ds-id" {
+  type = string
+}
+
+variable "rds_username" {
+  type = string  
+}
+
+variable "engine" {
+  type = string
+}
+
+variable "engine_version" {
+  type = string
+}
+
+variable "instance_class" {
   type = string
 }

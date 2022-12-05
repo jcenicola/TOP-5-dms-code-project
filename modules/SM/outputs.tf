@@ -5,14 +5,10 @@
 ##  ouput "<name>" from here.
 ############################################
 
-output "ds-id" {
-    value = aws_directory_service_directory.ds.id
+output "ds_admin" {
+    value = aws_secretsmanager_secret_version.ds_admin.secret_string
 }
 
-output "ds-dns" {
-    value = aws_directory_service_directory.ds.dns_ip_addresses
-}
-
-output "ds-name" {
-    value = aws_directory_service_directory.ds.name
+output "awssct" {
+    value = aws_secretsmanager_secret_version.awssct.secret_string
 }

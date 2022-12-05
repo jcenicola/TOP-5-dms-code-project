@@ -23,6 +23,7 @@ module "sftp" {
   namespace   = var.namespace
   region      = var.region
   environment = var.environment
+  sftp-bucket = var.sftp-bucket
 }
 
 module "iam" {
@@ -57,16 +58,26 @@ module "instances" {
   azs                    = var.azs
 }
 
+module "sm" {
+  depends_on = [
+    module.iam
+  ]
+source        = "./modules/SM"
+}
+
 module "ds" {
   depends_on = [
     module.network
   ]
-  source      = "./modules/directoryservice"
-  namespace   = var.namespace
-  region      = var.region
-  vpc_id      = module.network.vpc_id
-  app-subnets = module.network.app-subnets
-  # aws_secretsmanager_secret = module.ds.admin
+  source          = "./modules/directoryservice"
+  namespace       = var.namespace
+  region          = var.region
+  vpc_id          = module.network.vpc_id
+  app-subnets     = module.network.app-subnets
+  ds_domain_name  = var.ds_domain_name
+  ds_admin        = module.sm.ds_admin   #password for admin user
+  ds_edition      = var.ds_edition
+  ds_type         = var.ds_type
 }
 
 module "rds" {
@@ -76,7 +87,12 @@ module "rds" {
   source           = "./modules/rds"
   namespace        = var.namespace
   region           = var.region
+  engine           = var.engine
+  engine_version   = var.engine_version
+  instance_class   = var.instance_class
+  awssct           = module.sm.awssct #password for rds instance
   ds-id            = module.ds.ds-id
+  rds_username     = var.rds_username
   rds-ad-role      = module.iam.rds-ad-role
   database-sg      = module.network.database-sg
   database-subnets = module.network.database-subnets
@@ -86,13 +102,19 @@ module "dms" {
   depends_on = [
     module.rds
   ]
-  source           = "./modules/dms"
-  namespace        = var.namespace
-  region           = var.region
-  # ds-id            = module.ds.ds-id
-  # rds-ad-role      = module.iam.rds-ad-role
-  database-sg      = module.network.database-sg
-  database-subnets = module.network.database-subnets
-  target-endpoint  = module.rds.target-endpoint
+  source                = "./modules/dms"
+  namespace             = var.namespace
+  region                = var.region
+  dms_allocated_storage = var.dms_allocated_storage
+  dms_multi_az          = var.dms_multi_az
+  replication_instance_class = var.replication_instance_class
+  source_username       = var.source_username
+  source_database_name  = var.source_database_name
+  awssct                = module.sm.awssct # password for source database
+  target_username       = var.target_username
+  target_database_name  = var.target_database_name
+  database-sg           = module.network.database-sg
+  database-subnets      = module.network.database-subnets
+  target-endpoint       = module.rds.target-endpoint
   ec2instance-private_dns = module.instances.ec2instance-private_dns
 }

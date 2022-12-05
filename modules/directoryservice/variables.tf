@@ -19,3 +19,19 @@ variable "vpc_id" {
 variable "app-subnets" {
   type = list(any)
 }
+
+variable "ds_admin" {
+  type = string  
+}
+
+variable "ds_domain_name" {
+  type = string  
+}
+
+variable "ds_edition" {
+  type = string
+}
+
+variable "ds_type" {
+  type = string
+}

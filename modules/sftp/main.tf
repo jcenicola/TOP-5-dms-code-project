@@ -3,9 +3,9 @@
 ##################################################
 
 resource "aws_s3_bucket" "sftp-bucket" {
-  bucket = "${var.region}-sftp-bucket-${var.namespace}"
+  bucket = "${var.region}-${var.sftp-bucket}-${var.namespace}"
   tags = {
-    Name = "${var.region}-sftp-bucket"
+    Name = "${var.region}-${var.sftp-bucket}"
     Project = "${var.namespace}"
     Environment = var.environment
   }
